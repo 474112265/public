@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>无标题文档</title>
+  <link rel="stylesheet" type="text/css" href="dist/basic.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/dropzone.min.css">
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   -->
+  <script src="dist/dropzone.min.js"></script>
+  <!-- <script src="dist/dropzone-amd-module.js"></script> -->
+  <style>
+    .dropzone {
+      border: 2px dashed #0087F7;
+      border-radius: 5px;
+      background: white;
+    }
+  </style>
+</head>
+<form action="/upload" class="dropzone" id="uploadFile">
+  <div class="fallback">
+    <input name="file" type="file" multiple />
+  </div>
+</form>
+
+<body>
+
+  <script>
+//     Dropzone.options.myAwesomeDropzone = {
+//   paramName: "file", // The name that will be used to transfer the file
+//   maxFilesize: 2, // MB
+//   accept: function(file, done) {
+//     if (file.name == "justinbieber.jpg") {
+//       done("Naha, you don't.");
+//     }
+//     else { done(); }
+//   }
+// };
+    // $("#uploadFile").dropzone({
+    //   url: '/upload', //上传地址         
+    //   method: 'post', //方式        
+    //   addRemoveLinks: true,
+    //   maxFiles: 10,
+    //   maxFilesize: 512,
+    //   uploadMultiple: false,
+    //   parallelUploads: 100,
+    //   previewsContainer: false,
+    //   acceptedFiles: ".pdf, .doc,.txt,.docx,.xlsx,.xls,.jpg",
+    //   success: function (file, response, e) {
+    //     var res = JSON.parse(response);
+    //     $(".div").append(str);
+    //   }
+    // });
+  </script>
+</body>
+
+</html>
