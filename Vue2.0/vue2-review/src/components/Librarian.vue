@@ -28,9 +28,33 @@
                 <th>单价</th>
               </tr>
               <tr>
-                <td><input type="text" placeholder="书名" ref="bookName" @keyup.enter="focusElement('bookAuthor')"></td>
-                <td><input type="text" placeholder="作者" ref="bookAuthor" @keyup.enter="focusElement('bookPrice')"/></td>
-                <td><input type="text" placeholder="单价" ref="bookPrice" @keyup.enter="addBook();focusElement('bookName')"/></td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="书名"
+                    ref="bookName"
+                    @keyup.enter="focusElement('bookAuthor')"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="作者"
+                    ref="bookAuthor"
+                    @keyup.enter="focusElement('bookPrice')"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="单价"
+                    ref="bookPrice"
+                    @keyup.enter="
+                      addBook();
+                      focusElement('bookName');
+                    "
+                  />
+                </td>
               </tr>
             </table>
           </fieldset>
@@ -101,26 +125,42 @@ export default {
       // if(String(bookPriceValue).indexOf('$') == -1) {
       //   bookPriceValue += bookPriceValue + '$'
       // }
-      let bookArray = Object.values(this.$refs).map(item=>{return item.value})
-      Object.values(this.$refs).map(item=>{item.value = ""})
-      bookArray[2] = bookArray[2].indexOf(`$`) != -1 ? bookArray[2] : bookArray[2] + '$'
-      console.log(bookArray[2]);
+      let bookArray = Object.values(this.$refs).map((item) => {
+        return item.value;
+      });
+      Object.values(this.$refs).map((item) => {
+        item.value = "";
+      });
+      bookArray[2] = bookArray[2].indexOf(`$`) != -1 ? bookArray[2] : bookArray[2] + "$"; //判断是否有$
       let book = {
-          name: bookArray[0],
-          author: bookArray[1],
-          price: bookArray[2],
-          quantity: 0,
-          total: 0,
-      }
-      this.bookList.push(book)
-    }
+        name: bookArray[0],
+        author: bookArray[1],
+        price: bookArray[2],
+        quantity: 0,
+        total: 0,
+      };
+      this.bookList.push(book);
+    },
   },
-  beforeCreate(){
+  beforeCreate() {
     console.clear();
-  },
+ },
   mounted() {
     console.log(this);
     this.$refs.bookName.focus();
+    //判断localStorage中是否有 bookList
+    if (localStorage.getItem("bookList") != null) {
+      let listPse = JSON.parse(localStorage.getItem("bookList"));
+      console.log(listPse);
+      this.bookList = listPse;
+    } else {
+      let listStr = JSON.stringify(this.bookList);
+      localStorage.setItem("bookList", listStr);
+    }
+  },
+  beforeDestroy() {
+    let listStr = JSON.stringify(this.bookList);
+    localStorage.setItem("bookList", listStr);
   },
   computed: {
     getTotal: {
