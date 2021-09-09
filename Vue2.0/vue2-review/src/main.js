@@ -5,6 +5,10 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+
+import './components/global/index'
+// Vue.component('helloVue',{render(){return <p>hello Vue2.0</p>}})
+
 new Vue({
   router,
   store,

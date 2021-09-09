@@ -10,7 +10,7 @@
         <td>{{ item.price }}</td>
         <td>{{ item.quantity }}</td>
         <td>
-          <button @click="item.quantity--">-</button
+          <button :disabled="item.quantity <= 0" @click="item.quantity--">-</button
           ><button @click="item.quantity++">+</button>
         </td>
         <td>{{ getTotal[index] }}</td>
