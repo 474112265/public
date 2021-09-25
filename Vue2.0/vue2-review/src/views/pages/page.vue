@@ -7,7 +7,8 @@
         <el-table-column prop="product_img_url" label="图片" width="80">
           <template slot-scope="scope">
             <img
-              :src="scope.row.product_img_url"
+              :src="loadImg"
+              v-lazy="scope.row.product_img_url"
               width="100%"
               alt="图片加载失败，请重新刷新页面！"
             />
@@ -32,6 +33,11 @@
 
 <script>
 export default {
+  data(){
+    return{
+      loadImg:require('@/assets/load.gif')
+    }
+  },
   props: ["lists"],
   methods: {
     clickMsg(id) {
@@ -47,6 +53,9 @@ export default {
         });
     },
   },
+  created(){
+    console.log(this.loadImg);
+  }
 };
 </script>
 

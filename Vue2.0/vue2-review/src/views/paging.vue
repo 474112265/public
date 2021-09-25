@@ -27,7 +27,7 @@ export default {
   },
   created() {
     this.$http({
-      url: "/home/page/1/10",
+      url: "/home/page/1/40",
       method: "get",
     })
       .then((res) => {
@@ -45,7 +45,7 @@ export default {
   methods: {
     handleCurrentChange(val) {
       this.$http({
-        url: `/home/page/${val}/10`,
+        url: `/home/page/${val}/40`,
         method: "get",
       })
         .then((res) => {

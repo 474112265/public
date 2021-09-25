@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Star{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            sing(){
+                console.log(`${this.name}唱歌${this.age}`);
+            }
+        }
+        class getStar extends Star{
+            constructor(name,age){
+                super(name,age);
+            }
+        }
+        var kt = new getStar("张三",18);
+        kt.sing();
+    </script>
+</body>
+</html>

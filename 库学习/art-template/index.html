@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./bootstrap.css">
+  <script src="./bootstrap.js"></script>
+  <script src="./template-web.js"></script>
+</head>
+
+<body>
+  <h2>测试art-templart页面</h2>
+  <input type="button" class="btn btn-primary btn-sm" id="btn" value="点击我获取数据">
+  <div id="box"></div>
+</body>
+
+</html>
+<script id="oneTemplate" type="text/html">
+    {{if code="200"}}
+    {{each newslist}}
+    <div class="row" style="inline-block;">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="{{@$value.picUrl}}" alt="加载失败">
+            <div class="caption">
+              <h3>{{$value.title}}</h3>
+              <p>{{$value.description}}</p>
+              <p>发布时间：{{@$value.ctime}}</p>
+              <p><a href="{{@$value.url}}" class="btn btn-primary" role="button">查看详细</a> 
+            </div> 
+          </div> 
+        </div>
+      </div>
+      {{/each}}
+      {{/if}}
+</script>
+<script>
+  document.querySelector("#btn").onclick = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", "http://api.tianapi.com/meinv/index?key=e67895529c28078b81d375b5ed5f157f&num=10");
+    xhr.onreadystatechange = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        var data = JSON.parse(xhr.responseText);
+        console.log(data);
+        var templates = template('oneTemplate', data);
+        console.log(templates);
+        var box = document.querySelector("#box");
+        box.innerHTML = templates;    
+      }
+      else{
+        console.log("错误");
+      }
+    }
+    xhr.send(null);
+  }
+
+
+</script>

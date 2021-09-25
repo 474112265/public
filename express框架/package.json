@@ -1,0 +1,19 @@
+{
+  "name": "exp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1(内置路由).js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cron": "^1.8.2",
+    "jquery": "^3.5.1",
+    "request": "^2.88.2"
+  }
+}

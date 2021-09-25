@@ -4,12 +4,14 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import axios from 'axios';
+import axios from '@/request/index.js';
+import vueLazyLoad from 'vue-lazyLoad'
 
-axios.defaults.baseURL = "http://1.117.165.21:7002"
+
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(vueLazyLoad)
 
 
 import './components/global/index'

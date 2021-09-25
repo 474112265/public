@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fn = data1 =>//如果只有一个形参 则可以省略小括号()
+            console.log(data1);//如果函数体内只有一行代码 则可以省略大括号{}
+        fn(2);
+        var obj = {name:"zhangsan",age:18};
+        function a(){
+            console.log(this);
+            return () => {console.log(this)};//箭头函数中的this默认指向函数体外 作用域下的this
+        }
+        var resFn = a.apply(obj);
+        resFn();
+    </script>
+</body>
+</html>
